@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: darkcyan;
+}
+
+#todo-container {
+    width: 800px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 0px;
+}
+
+#title {
+    width: 100%;
+    color: white;
+    background-color:sienna;
+    text-align: center;
+    padding: 5px;
+}
+
+#todo-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+#todo-input {
+    width: 50%;
+    margin: 5px 20px 5px 5px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    background-color: antiquewhite;
+}
+
+#todo-select {
+    width: 10%;
+    margin: 5px 10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color:navajowhite;
+}
+
+#submit-btn {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    background-color:rgb(5, 133, 24);
+    color: white;
+    cursor: pointer;
+}
+
+
+#filter-div {
+    width: 100%;
+    padding: 10px;
+    background-color:dimgray;
+    color: white;
+}
+
+#filter-div select {
+    border-radius: 5px;
+    background-color: navajowhite;
+    cursor: pointer;
+}
+
+#todo-List {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:dimgray;
+    padding: 0 10px;
+}
+
+.todo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.High {
+    background-color: rgb(153, 14, 14);
+}
+.Medium {
+    background-color:darkgoldenrod;
+}
+.Low {
+    background-color: rgb(35, 95, 33);
+}
+
+.checked {
+    text-decoration: line-through;
+}
+
+#delete {
+    text-decoration: none;
+    background-color: rgba(246, 11, 11, 0.984);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    cursor: pointer;
+}

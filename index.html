@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="todo-container">
+        <h1 id="title">Priority To-Do List</h1>
+
+        <form id="todo-form">
+
+            <label for="todo-input">To-Do:</label>
+            <input type="text" name="todo-input" id="todo-input" placeholder="Add To-do" required>
+
+            <label for="priority">Choose Priority:</label>
+            <select name="priority" id="todo-select">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <button type="submit" id="submit-btn">Add</button>
+        </form>
+
+        <div id="filter-div">
+            <label for="filter-priority">Filter To-do:</label>
+            <select name="filter-priority" id="filter-select">
+                <option value="All">All</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+
+        <div id="todo-List"></div>
+
+    </div>
+    
+    
+
+    
+
+
+
+    <script src="index.js"></script>
+</body>
+</html>
