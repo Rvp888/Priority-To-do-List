@@ -6,9 +6,9 @@ const submitBtn = document.getElementById("submit-btn");
 const filterSelect = document.getElementById("filter-select");
 const todoList = document.getElementById("todo-List");
 
-
-let todoArray = JSON.parse(localStorage.getItem("todoItem"));
-if (!todoArray) todoArray = [];
+let todoArray = [];
+todoArray = JSON.parse(localStorage.getItem("todoItem"));
+if (!todoArray) todoArray = []; 
 renderTodos(todoArray);
 
 submitBtn.addEventListener("click", () => {
@@ -27,6 +27,7 @@ submitBtn.addEventListener("click", () => {
     renderTodos(todoArray);
 
 })
+
 
 function renderTodos(todos){
     todoList.innerHTML = "";
@@ -52,7 +53,8 @@ todoList.addEventListener("click", (event) => {
         let item = event.target.parentElement;
         todoArray.forEach((todo) => {
             if (todo.id === Number(item.id)){
-                todoArray.splice(todo, 1);
+                let index = todoArray.indexOf(todo);
+                todoArray.splice(index, 1);
             }
         })
     }
