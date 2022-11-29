@@ -91,7 +91,7 @@ body {
 .todo {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    position: relative;
     padding: 8px;
     font-size: 20px;
     color: white;
@@ -99,12 +99,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
-
-
-
-
-
 
 
 .High {
@@ -121,7 +115,21 @@ body {
     text-decoration: line-through;
 }
 
+#edit {
+    position: absolute;
+    right: 75px;
+    text-decoration: none;
+    background-color:rgb(34, 86, 244);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 5px 7px;
+    cursor: pointer;
+}
+
 #delete {
+    position: absolute;
+    right: 8px;
     text-decoration: none;
     background-color: rgba(246, 11, 11, 0.984);
     color: white;
