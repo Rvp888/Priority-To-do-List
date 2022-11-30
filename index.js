@@ -1,30 +1,46 @@
 
+/*============================== Element-Selection =========================================================================================*/
+
 const todoForm = document.getElementById("todo-form");
 const todoInput = document.getElementById("todo-input");
 const todoSelect = document.getElementById("todo-select");
 const submitBtn = document.getElementById("submit-btn");
 const filterSelect = document.getElementById("filter-select");
 const todoList = document.getElementById("todo-List");
+const messageEnter = document.getElementById("enter-message");
 let targetTodo;
 let todoArray = [];
+
 todoArray = JSON.parse(localStorage.getItem("todoItem"));
-// if (!todoArray) todoArray = []; 
+
 renderTodos(todoArray);
 
 
 
-/*--------------------------- Function To Add new item in the list(Array) or to Save edited item ------------------------------------------------*/
+/*============================== To-do Functions =================================================================================================*/
+
+
+/*--------------------------- Function To Add new item in the list(Array) or to Save edited item -------------------------------------------*/
 
 
 function addTodo(e) {
     e.preventDefault();
-    if (e.target.innerText == "Save") {
+    if (todoInput.value === "") {
+        messageEnter.innerText = "Please Enter the To-do";
+        setTimeout(()=>{
+            messageEnter.innerText = "";
+        },2000);
+        return;
+    }
+
+    else if (e.target.innerText == "Save") {
         saveTodo(e,todoInput.value,todoSelect.value);
+        messageEnter.innerText = "Item Edited Successfully";
+        setTimeout(()=>{
+            messageEnter.innerText = "";
+        },2000);
     }
     else {
-
-        if (todoInput.value === "") return;
-
         const title = todoInput.value;
         const priority = todoSelect.value;
 
@@ -49,8 +65,9 @@ function renderTodos(todos){
     todoList.innerHTML = "";
 
     todos.map((todo) => {
-        todoList.innerHTML += `<div id="${todo.id}" class="todo  
-        ${todo.priority}"> <span id="span" class="${todo.checked ? "checked" : ""}">${todo.title}</span> <button id="edit">Edit</button> <button id="delete">Remove</button> </div>`
+        todoList.innerHTML += `<div id="${todo.id}" class="todo  ${todo.priority}"> 
+        <span id="span" class="${todo.checked ? "checked" : ""}">${todo.title}</span> 
+        <button id="edit">Edit</button> <button id="delete">Remove</button> </div>`;
     })
 }
 
@@ -66,10 +83,12 @@ function renderTodos(todos){
                 todoArray.splice(index, 1);
             }
         })
+        renderTodos(todoArray);
+        localStorage.setItem("todoItem",JSON.stringify(todoArray));
     }
 
 
-/*----------------------------------Function Filter To-do List ----------------------------------------------------------------------------------*/
+/*---------------------------------- Function Filter To-do List ----------------------------------------------------------------------------------*/
 
 
 
@@ -85,6 +104,9 @@ function filterTodo() {
     else if (option === "Low"){
         todos = todos.filter((todo) => todo.priority === "Low");
     }
+    else if (option === "Completed"){
+        todos = todos.filter((todo) => todo.checked === true);
+    }
 
     renderTodos(todos);
 }
@@ -95,7 +117,7 @@ function filterTodo() {
 
 
 function editTodo(e) {
-    targetTodo = e.path[1].firstElementChild; //span
+    targetTodo = e.path[1].firstElementChild; //span element
     todoInput.value = targetTodo.textContent;
     submitBtn.innerText = "Save";
 }
@@ -118,41 +140,51 @@ function saveTodo(e,title,priority) {
 
 
 
+/*===================================== Event-Listeners ====================================================================================*/
 
-/*===================================== Event-Listeners ================================================================================*/
 
-// To Filter //
+// To Add new To-do //
+
+submitBtn.addEventListener("click", addTodo);
+
+
+// To Filter To-dos //
 
 filterSelect.addEventListener("change",filterTodo);
 
 
-// To check, Edit and Delete //
+// To Edit and Delete a To-do //
 
 todoList.addEventListener("click", (event) => {
 
     if (event.target.id === "delete"){
         deleteTodo(event);
+        messageEnter.innerText = "Item Deleted Successfully";
+        setTimeout(()=>{
+            messageEnter.innerText = "";
+        },2000);
     }
 
     else if (event.target.id === "edit"){
         editTodo(event);
     }
 
-    else if (event.target.id === "span"){
+} )
+
+
+// To check and uncheck the completed To-do //
+
+todoList.addEventListener("dblclick", (event) => {
+
+    if (event.target.id === "span"){
         const todoItem = event.target.parentElement;
         todoArray.map((todo) => {
             if (todo.id === Number(todoItem.id)){
                 todo.checked = !todo.checked;
             }
         });
+        renderTodos(todoArray);
+        localStorage.setItem("todoItem",JSON.stringify(todoArray));
     }
+})
 
-    renderTodos(todoArray);
-    localStorage.setItem("todoItem",JSON.stringify(todoArray));
-} )
-
-
-
-// To Add new To-do //
-
-submitBtn.addEventListener("click", addTodo);
