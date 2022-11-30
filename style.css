@@ -5,25 +5,27 @@
 }
 
 body {
-    background-color: darkcyan;
+    background-color:darkslategray;
 }
 
 #todo-container {
-    width: 800px;
+    width: 900px;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px 0px;
+    box-shadow: 0 0 15px 0px;
 }
 
 #title {
     width: 100%;
     color: white;
-    background-color:sienna;
+    background-color:lightseagreen;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 0 0 6px rgb(46, 45, 45);
 }
 
 #todo-form {
@@ -35,6 +37,7 @@ body {
     background-color: black;
     color: white;
     font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #todo-input {
@@ -75,6 +78,7 @@ body {
     background-color:dimgray;
     color: white;
     display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #filter-div select {
@@ -126,6 +130,10 @@ body {
 
 .checked {
     text-decoration: line-through;
+}
+
+#span {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #edit {
