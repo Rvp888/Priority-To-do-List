@@ -11,7 +11,7 @@ const messageEnter = document.getElementById("enter-message");
 let targetTodo;
 let todoArray = [];
 
-todoArray = JSON.parse(localStorage.getItem("todoItem"));
+todoArray = JSON.parse(localStorage.getItem("todoItem")) || [];
 
 renderTodos(todoArray);
 
@@ -117,7 +117,7 @@ function filterTodo() {
 
 
 function editTodo(e) {
-    targetTodo = e.path[1].firstElementChild; //span element
+    targetTodo = e.target.parentElement.firstElementChild; //span element
     todoInput.value = targetTodo.textContent;
     submitBtn.innerText = "Save";
 }
